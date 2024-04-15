@@ -39,7 +39,7 @@ route::middleware(['auth', 'role:guide'])->group(function () {
    });
 
 Route::get('/register', [AuthController::class, 'register'])->name('register'); // Unique name for GET route
-Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post'); // Unique name for POST route
+Route::post('/registerrf', [AuthController::class, 'registerPost'])->name('register.post'); // Unique name for POST route
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginpost'])->name('login.post');
 Route::get('/home', [homecontroller::class, 'index']);

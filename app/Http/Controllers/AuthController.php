@@ -39,14 +39,6 @@ class AuthController extends Controller
             if(Auth::user()->role == 'admin'){
 
                 return redirect()->route("admin")->with('error','Email or Password salah');
-
-            }elseif(Auth::user()->role == 'user')   {
-
-                return redirect()->route("user")->with('error','Email or Password salah');
-
-            }else(Auth::user()->role =='guide'){
-                
-                return redirect()->route("guide")->with('error','Email or Password salah');
             }
         }
 

@@ -19,7 +19,8 @@
                             {{ Session::get('success') }}
                         </div>
                     @endif
-                    <form action="" method="POST" >
+                    <form action="{{ route('register.post') }}" method="POST" >
+                    
                         @csrf
                         <div class="mb-3">
                             <label form="name" class="form-label">Name</label>
