@@ -22,10 +22,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('excursion', function (Blueprint $table) {
-            $table->unsignedBigInteger('organizer_id'); // Add organizer_id column
-            $table->foreign('organizer_id')->references('id')->on('expeditionorganizers')->onDelete('cascade');
-        });
+       
     }
 
     /**

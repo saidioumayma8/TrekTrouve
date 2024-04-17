@@ -20,7 +20,7 @@
                         </div>
                     @endif
                     <form action="{{ route('register.post') }}" method="POST" >
-                    
+
                         @csrf
                         <div class="mb-3">
                             <label form="name" class="form-label">Name</label>
@@ -33,6 +33,12 @@
                         <div class="mb-3">
                             <label form="passwrd" class="form-label">password</label>
                             <input type="password" name="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3">
+                        <select name="role" id="">
+                        <option value="user" class="mb-3">User</option>
+                        <option value="guide" class="mb-3">Guide</option>
+                        </select>
                         </div>
                         <div class="mb-3">
                             <div class="d-grid">

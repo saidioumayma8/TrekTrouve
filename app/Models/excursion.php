@@ -11,15 +11,14 @@ class excursion extends Model
         protected $table = "excursion";
 
         protected $fillable = [
-            'title',
             'date',
             'description',
-            'difficultylevel',
             'duration',
             'image',
             'location',
             'title',
             'user_id',
+            'trail_id',
         ];
 
     // Define the relationship with Trail
