@@ -26,18 +26,6 @@ route::middleware(['auth', 'role:admin'])->group(function () {
  })->name("admin");
 });
 
-route::middleware(['auth', 'role:user'])->group(function () {
-    route::get('/user', function () {
-       return 'bonjour user';
-    })->name("user");
-   });
-
-route::middleware(['auth', 'role:guide'])->group(function () {
-    route::get('/guide', function () {
-       return 'bonjour guide';
-    })->name("guide");
-   });
-
 Route::get('/register', [AuthController::class, 'register'])->name('register'); // Unique name for GET route
 Route::post('/registerrf', [AuthController::class, 'registerPost'])->name('register.post'); // Unique name for POST route
 Route::get('/login', [AuthController::class, 'login'])->name('login');
