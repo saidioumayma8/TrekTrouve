@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class trailController extends Controller
 {
+    public function showTrail(trail $trail)
+    {
+        return view('guide.trail', compact('trail'));
+    }
+
+
+    public function show($id)
+    {
+        $trail = trail::find($id);
+        return view('trail.show', compact('trail'));
+    }
+
     public function create()
     {
         return view('guide.create');
@@ -51,6 +63,6 @@ class trailController extends Controller
             // Add other fields here
         ]);
 
-        return redirect()->route('trails.index')->with('success', 'Trail created successfully!');
+        return redirect()->route('guide.create')->with('success', 'Excursion and Trail created successfully!');
     }
 }

@@ -40,11 +40,15 @@
                         <option value="guide" class="mb-3">Guide</option>
                         </select>
                         </div>
+
                         <div class="mb-3">
                             <div class="d-grid">
                                 <button class="btn btn-primary">Register</button>
                             </div>
                         </div>
+                        <div>
+                            <h6><a href="{{ route('login') }}">i have a conte ?</a></h6>
+                           </div>
                     </form>
                 </div>
             </div>

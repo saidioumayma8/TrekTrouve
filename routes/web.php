@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ExcursionController;
 use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\trailController;
+use App\Http\Controllers\excursionController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -22,9 +22,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //     dd($user->role);
 // });
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[excursionController::class, 'index']);
 Route::middleware(['auth', 'role:admin'])->group(function () {
  route::get('/admin', function () {
     return 'bonjour Admin';
@@ -39,6 +37,10 @@ Route::post('/guide/store', [trailController::class, 'store'])->name('guide.stor
 
 
 });
+Route::get('/guide/trail/{excursion}', [trailController::class, 'showTrail'])->name('guide.trail');
+Route::get('/trail/{id}', [TrailController::class, 'show'])->name('trail.show');
+
+
 
 Route::get('/register', [AuthController::class, 'register'])->name('register'); // Unique name for GET route
 Route::post('/registerrf', [AuthController::class, 'registerPost'])->name('register.post'); // Unique name for POST route

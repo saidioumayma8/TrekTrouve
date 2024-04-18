@@ -32,7 +32,7 @@
 			    <li><a href="gallery.html">Gallery</a></li>
 			    <li><a data-slide="slides" data-slide-target="#discover">Discover</a></li>
 			    <li><a href="news.html"> News</a></li>
-				<li><button class="btn-login" id="openLogin">LOGIN</button></li>
+				<li><a href="{{ route('login') }}"><button  class="btn-login" id="openLogin">LOGIN</button></a></li>
   		  	</ul>
 		</div>
 	</div>
@@ -263,99 +263,20 @@
 	</div>
 	<div class="section-tour-body">
 		<div class="row">
+            @foreach($excursions as $excursion)
 			<div class="col-1 ">
 				<img src="{{ asset('assets/img/pantai-kuta.jpg') }}">
 				<div class="overlay">
 					<div class="caption">
 						<div class="caption-text">
-							<p>Lake Tiguelmamine</p>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star"></span>
-							<span class="ion-ios-star"></span> <br>
-							<span class="ion-bag big"></span> &nbsp;
-							<b>Rp. 15.000</b>
-							<a href="single-destination.html" class="btn btn-orange btn-round right">See Details</a>
+							<p>{{ $excursion->title }}</p>
+							<b>{{ $excursion->prix }}</b>
+							<a href="{{ route('guide.trail', $excursion->id) }}" class="btn btn-orange btn-round right">See Details</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1 ">
-				<img src="{{ asset('assets/img/temple.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Mount Kilimanjaro</p>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star"></span>
-							<span class="ion-ios-star"></span> <br>
-							<span class="ion-bag big"></span> &nbsp;
-							<b>Rp. 15.000</b>
-							<a href="single-destination.html" class="btn btn-orange btn-round right">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-2 ">
-				<img src="{{ asset('assets/img/tanah-lot.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Lac Ouiouane</p>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star"></span> <br>
-							<span class="ion-bag big"></span> &nbsp;
-							<b>Rp. 15.000 - Rp. 60.000</b> <br>
-							<a href="single-destination.html" class="btn btn-orange btn-round">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-2 ">
-				<img src="{{ asset('assets/img/bali-bird-park.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Bali Bird Park</p>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star"></span>
-							<span class="ion-ios-star"></span> <br>
-							<span class="ion-bag big"></span> &nbsp;
-							<b>Rp. 75.000 - Rp. 150.000</b> <br>
-							<a href="single-destination.html" class="btn btn-orange btn-round">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-2 ">
-				<img src="{{ asset('assets/img/gunung.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Mount Batur</p>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star checked"></span>
-							<span class="ion-ios-star"></span>
-							<span class="ion-ios-star"></span> <br>
-							<span class="ion-bag big"></span> &nbsp;
-							<b>Rp. 10.000</b> <br>
-							<a href="single-destination.html" class="btn btn-orange btn-round">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            @endforeach
 	</div>
 </section>
 
@@ -420,7 +341,7 @@
 				</div>
 			</div>
 			<div class="col-2 ">
-				<img src="{{ asset('assets/img/magoun.jpg') }}">
+				<img src="{{ asset('assets/img/toubkal.jpg') }}">
 				<div class="overlay">
 					<div class="caption">
 						<div class="caption-text">
