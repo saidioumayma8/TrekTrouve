@@ -35,9 +35,6 @@
                                 <button class="btn btn-primary">Login</button>
                             </div>
                         </div>
-                        <div>
-                            <h6>dont have a conte ?<a href="{{ route('register') }}"> create a conte</a></h6>
-                           </div>
                     </form>
                 </div>
             </div>

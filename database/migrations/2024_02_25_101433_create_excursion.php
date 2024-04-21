@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('excursion', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date');
+            $table->date('date');
             $table->text('description');
             $table->integer('duration');
             $table->string('image');
             $table->string('location');
             $table->string('title');
+            $table->string('prix');
             $table->unsignedBigInteger('user_id'); // Add user_id column
             $table->unsignedBigInteger('trail_id'); // Add user_id column
             $table->timestamps();

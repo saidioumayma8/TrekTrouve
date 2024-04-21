@@ -43,11 +43,11 @@
 
                         <div class="mb-3">
                             <div class="d-grid">
-                                <button class="btn btn-primary">Register</button>
+                                <button class="btn btn-orange btn-round right">Register</button>
                             </div>
                         </div>
                         <div>
-                            <h6><a href="{{ route('login') }}">i have a conte ?</a></h6>
+                            <h6><a href="{{ route('login') }}">you have a conte ?</a></h6>
                            </div>
                     </form>
                 </div>

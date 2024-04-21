@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\trailController;
 use App\Http\Controllers\excursionController;
+use App\Http\Controllers\CommunityPostController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -37,16 +38,19 @@ Route::post('/guide/store', [trailController::class, 'store'])->name('guide.stor
 
 
 });
+
 Route::get('/guide/trail/{excursion}', [trailController::class, 'showTrail'])->name('guide.trail');
 Route::get('/trail/{id}', [TrailController::class, 'show'])->name('trail.show');
+Route::get('/post/{id}', [CommunityPostController::class, 'show'])->name('post.index');
+Route::get('/post/create', [CommunityPostController::class, 'create'])->name('post.create');
+Route::post('/post/store', [CommunityPostController::class, 'store'])->name('post.store');
 
+Route::resource('/communitypost', CommunityPostController::class);
 
-
-Route::get('/register', [AuthController::class, 'register'])->name('register'); // Unique name for GET route
-Route::post('/registerrf', [AuthController::class, 'registerPost'])->name('register.post'); // Unique name for POST route
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/registerrf', [AuthController::class, 'registerPost'])->name('register.post');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginpost'])->name('login.post');
-Route::get('/home', [homecontroller::class, 'index']);
 
 
 

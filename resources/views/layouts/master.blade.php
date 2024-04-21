@@ -28,7 +28,7 @@
 		<div class="navbar-item">
 			<a href="index.html" class="navbar-title">TrekTrouve Time</a>
 			<ul>
-		        <li><a href="destination.html">Destination</a></li>
+		        <li><a href="destination.html">Articles</a></li>
 			    <li><a href="gallery.html">Gallery</a></li>
 			    <li><a data-slide="slides" data-slide-target="#discover">Discover</a></li>
 			    <li><a href="news.html"> News</a></li>
@@ -46,8 +46,7 @@
     <li class="sidebar-list-hover"><a href="destination.html">Destination</a></li>
     <li class="sidebar-list-hover"><a href="gallery.html">Gallery</a></li>
     <li class="sidebar-list-hover"><a href="index.html#discover">Discover</a></li>
-    <li class="sidebar-list-hover"><a href="news.html"> News</a></li>
-    <li><a class="btn btn-orange btn-round" href="login.html"> Login</a></li>
+    <li><a class="{{ route('login') }}" href="login.html"> Login</a></li>
 </ul>
 </div>
 
@@ -55,7 +54,7 @@
 <section class="sidebar-overlay"></section>
 
 <!-- Login Form -->
-
+{{-- 
 <div class="login-form">
 	<div class="login-top">
 		<span class="close">&times;</span>
@@ -75,13 +74,13 @@
 		<div class="form-input">
 			<button type="submit" class="btn btn-login">Log In</button>
 		</div>
-		<a href="" class="text-center">Don't have account ? Register now</a>
+		<a href="{{ route('login') }}" class="text-center">Don't have account ? Register now</a>
 	</div>
 </div>
 
 <div class="login-overlay"></div>
 
-<!-- Section Header -->
+<!-- Section Header --> --}}
 
 <section class="section-header">
 	<div class="section-header-image">
@@ -108,25 +107,24 @@
 <section class="section section-about">
 	<div class="about-head slides">
 		<h3>TrekTrouve Time</h3>
-		<p><b>Bavel</b> merupakan singkatan dari <b>Bali Travel Time</b> merupakan website yang bertujuan mengenalkan pesona keindahan Bali mulai dari Wisata dan Budaya .
-		Tidak hanya sarana untuk memperkanalkan, <b>Bavel</b> juga menyediakan berbagai layanan pemesanan tiket mulai tiket Tour dan tempat penginapan di sekitar Bali </p>
+		<p>TrekTrouve, or TT, is your gateway to unforgettable journeys across Morocco. We specialize in curated trips that immerse you in the heart of Moroccan culture, adventure, and natural beauty</p>
 	</div>
 	<div class="about-body">
 		<div class="row ">
 			<div class="col">
 				<img src="{{ asset('assets/img/About/035-trekking.png') }}">
 				<h2>ADVENTURE</h2>
-				<p>Dapatkan pengalaman berpetualang yang belum pernah anda rasakan sebelumnya hanya di Bali</p>
+				<p>Embark on immersive journeys to discover the hidden gems of Morocco, from ancient cities to breathtaking landscapes.</p>
 			</div>
 			<div class="col">
 				<img src="{{ asset('assets/img/About/028-book.png') }}">
 				<h2>GUIDE</h2>
-				<p>Kami memberikan info - info seputar Bali mulai dari event dan destinasi terbaik</p>
+				<p>Our knowledgeable guides are your key to unlocking the wonders of Morocco. With their expertise and passion, they'll lead you on unforgettable adventures, sharing insider tips and local insights along the way</p>
 			</div>
 			<div class="col">
 				<img src="{{ asset('assets/img/About/024-tent.png') }}">
 				<h2>STAY</h2>
-				<p>Anda tidak perlu kawatir akan menetap dimana karna kami menyediakan tiket Hotel terbaik</p>
+				<p>Experience the authentic hospitality of Morocco with our carefully selected accommodations. From cozy riads in bustling medinas to luxurious desert camps under the stars, we offer a range of options to suit every traveler's taste and budget.</p>
 			</div>
 		</div>
 	</div>
@@ -265,12 +263,14 @@
 		<div class="row">
             @foreach($excursions as $excursion)
 			<div class="col-1 ">
-				<img src="{{ asset('assets/img/pantai-kuta.jpg') }}">
+				<img src="storage/{{ $excursion->image }}">
 				<div class="overlay">
 					<div class="caption">
 						<div class="caption-text">
 							<p>{{ $excursion->title }}</p>
-							<b>{{ $excursion->prix }}</b>
+							<b>{{ $excursion->prix }} Dh</b><br>
+							<b>{{ $excursion->date }}</b><br>
+							<b>{{ $excursion->length }} Km</b>
 							<a href="{{ route('guide.trail', $excursion->id) }}" class="btn btn-orange btn-round right">See Details</a>
 						</div>
 					</div>
@@ -289,134 +289,23 @@
 	</div>
 	<div class="section-tour-body">
 		<div class="row">
+            @foreach($post as $communitypost)
+
 			<div class="col-1 ">
-				<img src="{{ asset('assets/img/Elbrouz.jpg') }}">
+				<img src="storage/{{ $communitypost->image }}">
 				<div class="overlay">
 					<div class="caption">
 						<div class="caption-text">
-							<p>Ascension de l’ELBROUZ</p>
-
-							<a href="single-destination.html" class="btn btn-orange btn-round ">See Details</a>
+							<p>{{ $communitypost->title }}</p>
+							<a href="{{ route('post.index', $communitypost->id) }}" class="btn btn-orange btn-round ">See Details</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1 ">
-				<img src="{{ asset('assets/img/imsfrane.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Ascension de Imsfrane</p>
-
-							<a href="single-destination.html" class="btn btn-orange btn-round">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<div class="row">
-			<div class="col-2 ">
-				<img src="{{ asset('assets/img/magoun.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Ascension de M'agoun</p>
-
-							<a href="single-destination.html" class="btn btn-orange btn-round">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-2 ">
-				<img src="{{ asset('assets/img/Siroua-.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Ascension de Siroua</p>
-
-							<a href="single-destination.html" class="btn btn-orange btn-round">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-2 ">
-				<img src="{{ asset('assets/img/toubkal.jpg') }}">
-				<div class="overlay">
-					<div class="caption">
-						<div class="caption-text">
-							<p>Ascension de Toubkal</p>
-
-							<a href="single-destination.html" class="btn btn-orange btn-round ">See Details</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
+            @endforeach
+        </div>
+    </div>
 </section>
-
-<!-- <section class="section section-discover" id="discover">
-	<div class="section-head">
-		<div class="section-line"></div>
-		<h3 class="section-title">DISCOVERY TrekTrouve</h3>
-		<p class="section-subtitle">Adalah sebuah warisan indahnya alam dan budaya yang masih terjaga di Bali yang dapat anda jelajahi</p>
-	</div>
-	<div class="section-discover-body slides">
-		<div class="col">
-			<a href="destination.html">
-				<img src="img/selfie.jpg" alt="Destination">
-				<div class="caption">
-					<p>DESTINATION</p>
-					<div class="line"></div>
-					<div class="caption-text">
-						<p>Kunjungi destinasi wisata yang belum pernah anda temui sebelumnya</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col">
-			<a href="culture.html">
-				<img src="img/culture.jpg">
-				<div class="caption" alt="Culture">
-					<p>CULTURE</p>
-					<div class="line"></div>
-					<div class="caption-text">
-						<p>Selain pemandangan yang indah bali juga memiliki budaya yang mengesankan</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col">
-			<a href="event.html">
-				<img src="img/event.jpg">
-				<div class="caption" alt="Event">
-					<p>EVENT</p>
-					<div class="line"></div>
-					<div class="caption-text">
-						<p>Ikuti dan ketahui event - event menarik yang berlangsung di Bali</p>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col">
-			<a href="stay.html">
-				<img src="img/stay.jpg">
-				<div class="caption" alt="Stay">
-					<p>WHERE TO STAY</p>
-					<div class="line"></div>
-					<div class="caption-text">
-						<p>Temukan tempat penginapan terbaik dengan harga yang relatif murah</p>
-					</div>
-				</div>
-			</a>
-		</div>
-	</div>
-</section> -->
-
-<!-- Section Footer -->
-
 <section class="section-footer">
 	<div class="texture-handler-top"></div>
 	<div class="row">
@@ -461,9 +350,7 @@
 		<p><a href="https://github.com/yogs22/tourism-bali-template" rel="noreferer" target="_blank">Tourism Template</a> - Created With <span class="ion-heart red"></span> to create a Lovable Website</p>
 	</div>
 </section>
+@include('layouts.footer-scripts')
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/swipe.js"></script>
 </body>
 </html>

@@ -16,13 +16,12 @@ return new class extends Migration
         Schema::create('communitypost', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->dateTime('date');
+            $table->date('date');
             $table->string('image');
+            $table->string('title');
             $table->unsignedBigInteger('userid'); // Change to unsigned big integer
-            $table->unsignedBigInteger('itemsid'); // Change to unsigned big integer
             $table->timestamps();
             $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('itemsid')->references('id')->on('equipment_item')->onDelete('cascade');
         });
     }
 

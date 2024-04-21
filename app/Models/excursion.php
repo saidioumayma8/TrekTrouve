@@ -17,6 +17,7 @@ class excursion extends Model
             'image',
             'location',
             'title',
+            'prix',
             'user_id',
             'trail_id',
         ];
