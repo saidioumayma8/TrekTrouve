@@ -23,10 +23,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('prix');
             $table->unsignedBigInteger('user_id'); // Add user_id column
-            $table->unsignedBigInteger('trail_id'); // Add user_id column
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('trail_id')->references('id')->on('trail')->onDelete('cascade');
 
         });
     }

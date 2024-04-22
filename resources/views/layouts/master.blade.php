@@ -54,7 +54,7 @@
 <section class="sidebar-overlay"></section>
 
 <!-- Login Form -->
-{{-- 
+{{--
 <div class="login-form">
 	<div class="login-top">
 		<span class="close">&times;</span>
@@ -271,7 +271,7 @@
 							<b>{{ $excursion->prix }} Dh</b><br>
 							<b>{{ $excursion->date }}</b><br>
 							<b>{{ $excursion->length }} Km</b>
-							<a href="{{ route('guide.trail', $excursion->id) }}" class="btn btn-orange btn-round right">See Details</a>
+							<a href="{{ route('guide.trail', $excursion) }}" class="btn btn-orange btn-round right">See Details</a>
 						</div>
 					</div>
 				</div>

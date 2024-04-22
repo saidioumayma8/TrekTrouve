@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>{{ $communitypost->title }} - TrekTrouve</title>
+	<title> - TrekTrouve</title>
 	<link rel="icon" type="image/png" href="img/icon/bavel.png">
 
 	<!-- Meta Description -->
@@ -61,7 +61,7 @@
 	<img src={{asset('assets/img/temple.jpg') }}>
 	<div class="overlay">
 		<div class="header-title">
-			<h3>{{ $communitypost->title }}</h3>
+			<h3>trektrouve</h3>
 
 		</div>
 	</section>
@@ -69,7 +69,7 @@
 
 <ul class="breadcrumb">
   <li><a href="index.html">Home</a></li>
-  <li>Aeticls</li>
+  <li>Articls</li>
 </ul>
 
 <section class="section section-archive">

@@ -13,6 +13,8 @@ class trail extends Model
         'endpoint',
         'startpoint',
         'length',
+        'excursion_id',
+
     ];
 
     // Define the relationship with Excursion

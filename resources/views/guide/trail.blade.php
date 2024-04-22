@@ -40,11 +40,11 @@
 <ul class="sidebar-list">
 	<li><a href="" class="close"><span class="ion-android-close"></span></a></li>
 	<li class="sidebar-list-hover"><a href="index.html">Home</a></li>
-    <li class="sidebar-list-hover"><a href="destination.html">Destination</a></li>
+    <li class="sidebar-list-hover"><a href="destination.html">Articles</a></li>
     <li class="sidebar-list-hover"><a href="gallery.html">Gallery</a></li>
     <li class="sidebar-list-hover"><a href="index.html#discover">Discover</a></li>
-    <li class="sidebar-list-hover"><a href="news.html"> News</a></li>
-    <li><a class="btn btn-orange btn-round" href="login.html"> Login</a></li>
+    <li class="sidebar-list-hover"><a href="news.html"> Excursions</a></li>
+    <li><a class="{{ route('login') }}" href="login.html"> Login</a></li>
 </ul>
 </div>
 
@@ -53,7 +53,7 @@
 
 <!-- Login Form -->
 
-<div class="login-form">
+{{-- <div class="login-form">
 	<div class="login-top">
 		<span class="close">&times;</span>
 	</div>
@@ -75,19 +75,19 @@
 		<a href="" class="text-center">Don't have account ? Register now</a>
 	</div>
 </div>
-
+ --}}
 <div class="login-overlay"></div>
 
 <!-- Section -->
 
 <section class="section-ticket">
     <div class="header">
-        <img src="{{ asset('assets/img/elephant.jpg') }}">
+        <img src="storage/{{ $excursion->image }}">
         <div class="overlay">
             <div class="desc">
-                <h3>{{ $trail->Name }}</h3>
-                <p>Date: {{ $trail->date }}</p>
-                <p>Price: Rp. {{ $trail->price }}</p>
+                <h3>{{ $excursion->title }}</h3>
+                <p>Date: {{ $excursion->date }}</p>
+                <p>Price: Rp. {{ $excursion->price }}</p>
             </div>
         </div>
     </div>
@@ -100,7 +100,7 @@
                 <div class="detail">
                     <div class="col-1">
                         <div class="col">
-                            <span class="ion-clock"></span> 08.00 - 16.000
+                            <span class="ion-clock"></span>{{ $excursion->price }}
                         </div>
 						<div class="col">
 							<span class="ion-person-stalker"></span> Min 1 | Max 15 Pax
@@ -164,28 +164,23 @@
 			</div>
 		</div>
 		<div class="panel">
-			<div class="panel-body">
-				<form class="form-horizontal">
-					<div class="input-form">
-						<label>Select Date</label>
-						<input type="date" name="" class="form-control">
-					</div>
-					<div class="input-form">
-						<label>Number of Pax</label>
-						<select class="form-control">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</div>
-					<div class="input-form" id="find">
-						<label></label>
-						<button class="btn btn-ticket btn-orange" style="margin-top: 37px;text-align: right;">Purchase</button>
-					</div>
-				</form>
-			</div>
-		</div>
+            <div class="panel-body">
+                <form method="POST" action="{{ route('trail_reserv',$excursion) }}">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="people">Number of Pax</label>
+                        <select class="form-control" id="people" name="people" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Reserve Now</button>
+                </form>
+            </div>
+        </div>
 	</div>
 </section>
 

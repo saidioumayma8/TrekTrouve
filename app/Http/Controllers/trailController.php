@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\excursion;
 use App\Models\trail;
+use App\Models\excursion;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class trailController extends Controller
 {
-    public function showTrail(trail $trail)
+    public function showTrail(excursion $excursion)
     {
-        return view('guide.trail', compact('trail'));
+        return view('guide.trail', compact('excursion'));
     }
 
 
@@ -19,6 +20,24 @@ class trailController extends Controller
     {
         $trail = trail::find($id);
         return view('guide.trail', compact('trail'));
+    }
+
+    public function reserve(Request $request,excursion $excursion)
+    {
+
+        $request->validate([
+            'people' => 'required|integer|min:1',
+        ]);
+
+       $trail = Trail::where('excursion_id','=',$excursion->id)->first();
+        Reservation::create([
+            'user_id' => Auth::id(),
+            'trail_id' => $trail->id,
+            'excursion_id' => $excursion->id,
+            'people' => $request->people,
+        ]);
+
+        return redirect()->back()->with('success', 'Reservation successfully created!');
     }
 
     public function create()
@@ -43,21 +62,13 @@ class trailController extends Controller
             'excursion_prix' => 'required',
         ]);
 
-        $trail = trail::create([
-            'name' => $request->trail_name,
-            'difficultylevel' => $request->trail_difficulty,
-            'endpoint' => $request->trail_end_point,
-            'startpoint' => $request->trail_start_point,
-            'length' => $request->trail_length,
-        ]);
-
         if ($request->hasFile('excursion_image')) {
             $imagePath = $request->file('excursion_image')->store('excursion_images', 'public');
         } else {
             $imagePath = 'excursion_images\Jeph7HrGxhfS3iWrSliXqeQQJMY8L60aK4m0E9ML.jpg';
         }
 
-        excursion::create([
+        $excursion = excursion::create([
             'title' => $request->excursion_name,
             'date' => $request->excursion_date,
             'description' => $request->excursion_text,
@@ -65,10 +76,20 @@ class trailController extends Controller
             'location' => $request->excursion_location,
             'image' => $imagePath,
             'prix' => $request->excursion_prix,
-            'trail_id' => $trail->id,
             'user_id' => Auth::id(),
 
         ]);
+
+        trail::create([
+            'name' => $request->trail_name,
+            'difficultylevel' => $request->trail_difficulty,
+            'endpoint' => $request->trail_end_point,
+            'startpoint' => $request->trail_start_point,
+            'length' => $request->trail_length,
+            'excursion_id' => $excursion->id,
+
+        ]);
+
 
         return redirect()->route('guide.create')->with('success', 'Excursion and Trail created successfully!');
     }

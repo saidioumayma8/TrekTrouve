@@ -19,12 +19,11 @@ class excursion extends Model
             'title',
             'prix',
             'user_id',
-            'trail_id',
         ];
 
     // Define the relationship with Trail
     public function trail()
     {
-        return $this->hasOne(Trail::class);
+        return $this->hasOne(Trail::class,'excursion_id');
     }
     }

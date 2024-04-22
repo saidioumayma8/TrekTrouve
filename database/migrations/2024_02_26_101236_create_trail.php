@@ -22,6 +22,8 @@ return new class extends Migration
                 $table->string('startpoint');
                 $table->integer('length');
                 $table->timestamps();
+                $table->foreignID('excursion_id')->constrained('excursion')->onDelete('cascade');
+
             });
         }
     }
