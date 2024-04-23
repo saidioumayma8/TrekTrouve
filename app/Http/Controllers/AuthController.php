@@ -32,18 +32,26 @@ class AuthController extends Controller
     }
     public function loginpost(Request $request)
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-        if(Auth::attempt($credentials)){
-            if(Auth::user()->role == 'admin'){
+        $credentials = $request->only('email', 'password');
 
-                return redirect()->route("admin")->with('error','Email or Password salah');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->role == 'admin') {
+                return redirect()->route("admin")->with('success', 'Logged in successfully.');
+            } elseif ($user->role == 'user') {
+                return redirect()->route("user")->with('success', 'Logged in successfully.');
+            } elseif ($user->role == 'guide') {
+                return redirect()->route("guide")->with('success', 'Logged in successfully.');
             }
         }
 
-        return back()->with('error','Email or Password salah');
+        return back()->with('error', 'Invalid email or password.');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 
 }

@@ -29,7 +29,7 @@
                             {{ Session::get('error') }}
                         </div>
                     @endif
-                    <form action="{{ route('login') }}" method="POST" >
+                    <form action="{{ route('login.post') }}" method="POST" >
                         @csrf
                         <div class="mb-3">
                             <label form="email" class="form-label">Email address</label>
@@ -44,6 +44,10 @@
                                 <button class="btn btn-primary">Login</button>
                             </div>
                         </div>
+                        <div>
+                        <h6><a href="{{ route('register') }}">you have a conte ?</a></h6>
+                    </div>
+
                     </form>
                 </div>
             </div>

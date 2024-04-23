@@ -1,19 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>TrekTrouve</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TrekTrouve</title>
 
-	<!-- Meta Description -->
-	<meta name="description" content="Bali Travel Time">
-	<meta name="keywords" content="Travel, Bali, Tourism">
-	<meta name="robots" content="index, nofollow">
-	<meta name="web_author" content="Yogi Prasertawan">
-	<meta name="language" content="Indonesian">
+    <!-- Meta Description -->
+    <meta name="description" content="Bali Travel Time">
+    <meta name="keywords" content="Travel, Bali, Tourism">
+    <meta name="robots" content="index, nofollow">
+    <meta name="web_author" content="Yogi Prasertawan">
+    <meta name="language" content="Indonesian">
 
-	@include('layouts.header')
+    @include('layouts.header')
 
 </head>
 <body>
@@ -74,33 +75,36 @@
 
     <ul class="breadcrumb">
       <li><a href="index.html">Home</a></li>
-      <li>Excursion</li>
+      <li>Post Management</li>
     </ul>
 
-    <section class="section section-archive">
-        <div class="container">
-            <div class="row">
-                <div class="content">
-                    <div class="add-form">
-
-                            <div class="overview">
-                                <div class="stats">
-                                    <h2>Total Users: {{ $totalUsers }}</h2>
-                                </div>
-                                <div class="stats">
-                                    <h2>Total Posts: {{ $totalPosts }}</h2>
-                                </div>
-                                <div class="stats">
-                                    <h2>Total Excursions: {{ $totalExcursions }}</h2>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <a href="{{ route('admin.users.index') }}"><button data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">Manage Users</button></a>
-                                <a href="{{ route('admin.posts.index') }}"><button data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">Manage Posts</button></a>
-                                <a href="{{ route('admin.excursions.index') }}"><button data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">Manage Excursions</button></a>
-                            </div>
-
-    </section>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($posts as $post)
+                <tr>
+                    <td>{{ $post->title }}</td>
+                    <td>{{ $post->author }}</td>
+                    <td>{{ $post->date }}</td>
+                    <td>
+                        <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
     <section class="section-footer">
         <div class="texture-handler-top"></div>

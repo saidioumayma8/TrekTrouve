@@ -23,7 +23,7 @@
         	<a href="index.html" class="navbar-title" style="color: white;">TrekTrouve</a>
 		</div>
 		<div class="navbar-item">
-			<a href="index.html" class="navbar-title" style="color: white;">TrekTrouve</a>
+			<a href="{{ route('home') }}" class="navbar-title" style="color: white;">TrekTrouve</a>
 			<ul>
 		        <li><a href="destination.html">Destination</a></li>
 			    <li><a href="gallery.html">Gallery</a></li>
@@ -44,7 +44,16 @@
     <li class="sidebar-list-hover"><a href="gallery.html">Gallery</a></li>
     <li class="sidebar-list-hover"><a href="index.html#discover">Discover</a></li>
     <li class="sidebar-list-hover"><a href="news.html"> Excursions</a></li>
-    <li><a class="{{ route('login') }}" href="login.html"> Login</a></li>
+    @auth
+
+                <li><form action="{{ route('logout') }}"  method="POST">
+                    @csrf<button  class="btn-login" id="openLogin">logout</button>
+                </form></li>
+
+@else
+<li><a href="{{ route('login') }}"><button  class="btn-login" id="openLogin">LOGIN</button></a></li>
+				<li><a href="{{ route('register') }}"><button  class="btn-login" id="openLogin">REGISTER</button></a></li>
+                @endauth
 </ul>
 </div>
 
@@ -99,24 +108,20 @@
             <div class="panel-body">
                 <div class="detail">
                     <div class="col-1">
-                        <div class="col">
-                            <span class="ion-clock"></span>{{ $excursion->price }}
+                        <div class="col-2">
+                            Price: {{ $excursion->price }}
                         </div>
-						<div class="col">
-							<span class="ion-person-stalker"></span> Min 1 | Max 15 Pax
+						<div class="col-2">
+							Date: {{ $excursion->date }}
 						</div>
 						<div class="col">
-							<span class="ion-model-s"></span> Transport
+							Transport
 						</div>
 						<div class="col">
-							<span class="ion-pizza"></span> Breakfast
+							Breakfast
 						</div>
 					</div>
-					<div class="col-2">
-						<b>Star From</b>
-						<h2><b style="color: #f25601">Rp. 120.000 </b><small>/ Pax</small></h2> <br>
-						<a href="" data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">Find Ticket</a>
-					</div>
+
 				</div>
 			</div>
 		</div>
@@ -177,7 +182,7 @@
                             <option value="4">4</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Reserve Now</button>
+                    <button type="submit" data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">Reserve Now</button>
                 </form>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\trail;
 use App\Models\excursion;
 use App\Models\Reservation;
@@ -9,7 +10,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class trailController extends Controller
+
 {
+    public function index()
+    {
+        $excursions=excursion::all();
+        $post=Post::all();
+        return view('guide.index', compact('excursions', 'post'));
+
+    }
     public function showTrail(excursion $excursion)
     {
         return view('guide.trail', compact('excursion'));

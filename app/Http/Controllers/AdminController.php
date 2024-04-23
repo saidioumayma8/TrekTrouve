@@ -2,37 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\User;
+use App\Models\excursion;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $totalUsers = User::count();
+        $totalPosts = Post::count();
+        $totalExcursions = excursion::count();
+
+        return view('admin.index', compact('totalUsers', 'totalPosts', 'totalExcursions'));
     }
 
-    // User management
     public function manageUsers()
     {
-        // Logic to fetch and display user data
-        return view('admin.users');
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
-    public function updateUser(Request $request, $id)
+    public function deleteUser(User $user)
     {
-        // Logic to update user
+        $user->delete();
+        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
     }
 
-    public function deleteUser($id)
-    {
-        // Logic to delete user
-    }
 
     // Post management
     public function managePosts()
     {
-        // Logic to fetch and display post data
-        return view('admin.posts');
+        $posts = Post::all(); // Fetch all posts from the database
+    return view('admin.posts.index', compact('posts'));
     }
 
     public function updatePost(Request $request, $id)
@@ -52,13 +55,12 @@ class AdminController extends Controller
         return view('admin.excursions');
     }
 
-    public function updateExcursion(Request $request, $id)
-    {
-        // Logic to update excursion
-    }
-
     public function deleteExcursion($id)
-    {
-        // Logic to delete excursion
-    }
+{
+    $excursion = Excursion::findOrFail($id);
+    $excursion->delete();
+    return redirect()->route('admin.excursions.index')->with('success', 'Excursion deleted successfully.');
+}
+
+
 }
