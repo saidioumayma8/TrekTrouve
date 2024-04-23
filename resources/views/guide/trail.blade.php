@@ -82,7 +82,7 @@
 
 <section class="section-ticket">
     <div class="header">
-        <img src="storage/{{ $excursion->image }}">
+        <img src="{{ asset('assets/img/elephant.jpg') }}">
         <div class="overlay">
             <div class="desc">
                 <h3>{{ $excursion->title }}</h3>
