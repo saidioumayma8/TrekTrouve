@@ -1,158 +1,154 @@
 
+
+{{-- juyhgtbrvfdcs --}}
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TrekTrouve</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> - TrekTrouve</title>
+	<link rel="icon" type="image/png" href="img/icon/bavel.png">
 
-    <!-- Meta Description -->
-    <meta name="description" content="Bali Travel Time">
-    <meta name="keywords" content="Travel, Bali, Tourism">
-    <meta name="robots" content="index, nofollow">
-    <meta name="web_author" content="Yogi Prasertawan">
-    <meta name="language" content="Indonesian">
+	<!-- Meta Description -->
+	<meta name="description" content="Bali Travel Time">
+	<meta name="keywords" content="Travel, Bali, Tourism">
+	<meta name="robots" content="index, nofollow">
+	<meta name="web_author" content="Yogi Prasertawan">
+	<meta name="language" content="Indonesian">
+	@include('layouts.header2')
 
-    @include('layouts.header')
 
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-bars">
-                <a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
-                <a href="index.html" class="navbar-title">TrekTrouve Time</a>
+    <div class="app">
+        <header class="app-header">
+            <div class="app-header-logo">
+                <div class="logo">
+
+                    <h1 class="logo-title">
+                        <span>Trek</span>
+                        <span>Trouve</span>
+                    </h1>
+                </div>
             </div>
-            <div class="navbar-item">
-                <a href="{{ route('home') }}" class="navbar-title">TrekTrouve Time</a>
-                <ul>
-                    <li><a href="destination.html">Articles</a></li>
+            <div class="app-header-navigation">
+                <div class="tabs">
+                    <a href="{{ route('admin.users.index') }}">
+                        user managment
+                    </a>
+                    <a href="{{ route('admin.posts.index') }}" class="active">
+                        post managment
+                    </a>
+                    <a href="{{ route('admin.excursions.index') }}">
+                        excurtions managment
+                    </a>
 
-                    <li><a href="{{ route('admin.excursions.index') }}">Excursion Management</a></li>
-                    <li><a href="{{ route('admin.posts.index') }}">post Management</a></li>
+                </div>
+            </div>
+            <div class="app-header-actions">
 
-                    <li><a href="{{ route('admin.users.index') }}">User Management</a></li>
+                <div class="app-header-actions-buttons">
+                    <button class="icon-button large">
+                        <i class="ph-magnifying-glass"></i>
+                    </button>
+                    <button class="icon-button large">
+                        <i class="ph-bell"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header-mobile">
+                <button class="icon-button large">
+                    <i class="ph-list"></i>
+                </button>
+            </div>
 
+        </header>
+	<div class="app-body">
+		<div class="app-body-navigation">
+			<nav class="navigation">
+				<a href="#">
                     <li><form action="{{ route('logout') }}"  method="POST">
                         @csrf<button  class="btn-login" id="openLogin">logout</button>
                     </form></li>
+				</a>
+				<a href="#">
+					<i class="ph-check-square"></i>
+					<span>Scheduled</span>
+				</a>
+				<a href="#">
+					<i class="ph-swap"></i>
+					<span>Transfers</span>
+				</a>
+				<a href="#">
+					<i class="ph-file-text"></i>
+					<span>Templates</span>
+				</a>
+				<a href="#">
+					<i class="ph-globe"></i>
+					<span>SWIFT</span>
+				</a>
+				<a href="#">
+					<i class="ph-clipboard-text"></i>
+					<span>Exchange</span>
+				</a>
+			</nav>
+			<footer class="footer">
+				<h1>Trektrouve<small>©</small></h1>
+				<div>
+					Trektrouve ©<br />
+					All Rights Reserved 2024
+				</div>
+			</footer>
+		</div>
+		<div class="app-body-main-content">
+			<section class="service-section">
+				<h2>Admin</h2>
 
-    @else
-    <li><a href="{{ route('login') }}"><button  class="btn-login" id="openLogin">LOGIN</button></a></li>
-                    <li><a href="{{ route('register') }}"><button  class="btn-login" id="openLogin">REGISTER</button></a></li>
-                    @endauth
+				<div class="mobile-only">
+					<button class="flat-button">
+						Toggle search
+					</button>
+				</div>
 
-                    </ul>
-            </div>
-        </div>
-    </nav>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($posts as $post)
+                            <tr>
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->author }}</td>
+                                <td>{{ $post->date }}</td>
+                                <td>
+                                    <a href="{{ route('admin.posts.update', $post->id) }}" data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">Edit</a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-    <ul class="sidebar-list">
-        <li><a href="" class="close"><span class="ion-android-close"></span></a></li>
-        <li class="sidebar-list-hover"><a href="index.html">Home</a></li>
-        <li class="sidebar-list-hover"><a href="destination.html">Destination</a></li>
-        <li class="sidebar-list-hover"><a href="gallery.html">Gallery</a></li>
-        <li class="sidebar-list-hover"><a href="index.html#discover">Discover</a></li>
-        <li class="sidebar-list-hover"><a href="news.html"> News</a></li>
-        <li><a class="btn btn-orange btn-round" href="login.html"> Login</a></li>
-    </ul>
-    </div>
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.posts.delete', $post->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+	</div>
+</div>
+</body>
+</html>
 
 
-
-
-    <section class="section-header-single">
-        <img src="img/bg-news.jpg">
-        <div class="overlay">
-            <div class="header-title">
-                <h3>    Admin</h3>
-            </div>
-        </section>
-    </section>
-
-    <ul class="breadcrumb">
-      <li><a href="index.html">Home</a></li>
-      <li>Post Management</li>
-    </ul>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($posts as $post)
-                <tr>
-                    <td>{{ $post->title }}</td>
-                    <td>{{ $post->author }}</td>
-                    <td>{{ $post->date }}</td>
-                    <td>
-                        <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
-                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <section class="section-footer">
-        <div class="texture-handler-top"></div>
-        <div class="row">
-            <div class="col-left">
-                <p>Copyright &copy; 2017</p>
-                <p>Jl. Panglima Sudirman, Caruban Madiun <br>
-                Phone : +62 851 2343 9090 <br>
-                Email : contact@bavel.com </p>
-                <a href="https://www.facebook.com/bestbali/" target="_blank"><span class="ion-social-facebook icon-social"></span></a>
-                <a href="https://www.instagram.com/explorebali/" target="_blank"><span class="ion-social-instagram icon-social"></span></a>
-                <a href="https://twitter.com/hashtag/explorebali?lang=en" target="_blank"><span class="ion-social-twitter icon-social"></span></a>
-            </div>
-            <div class="col-right">
-                <b>EXPERIENCE</b>
-                <ul>
-                    <li><a href="#">Natural</a></li>
-                    <li><a href="#">Culture</a></li>
-                    <li><a href="#">Religi</a></li>
-                    <li><a href="#">Culnary</a></li>
-                    <li><a href="#">Adventure</a></li>
-                </ul>
-            </div>
-            <div class="col-right">
-                <b>TRAVEL GUIDE</b>
-                <ul>
-                    <li><a href="#">Tourism Guide</a></li>
-                    <li><a href="#">Travel Agent</a></li>
-                    <li><a href="#">Accomodations</a></li>
-                    <li><a href="#">On Budget</a></li>
-                </ul>
-            </div>
-            <div class="col-right">
-                <b>WHAT'S HAPPEN</b>
-                <ul>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Event</a></li>
-                    <li><a href="#">Tips & Info</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p><a href="https://github.com/yogs22/tourism-bali-template" rel="noreferer" target="_blank">Tourism Template</a> - Created With <span class="ion-heart red"></span> to create a Lovable Website</p>
-        </div>
-    </section>
-    @include('layouts.footer-scripts')
-
-    </body>
-    </html>
-    </body>
-    </html>

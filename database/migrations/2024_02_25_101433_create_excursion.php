@@ -22,7 +22,10 @@ return new class extends Migration
             $table->string('location');
             $table->string('title');
             $table->string('prix');
+            $table->boolean("is_accepted")->default(false);
             $table->unsignedBigInteger('user_id'); // Add user_id column
+            $table->softDeletes();
+
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

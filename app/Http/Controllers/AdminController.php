@@ -15,7 +15,7 @@ class AdminController extends Controller
         $totalPosts = Post::count();
         $totalExcursions = excursion::count();
 
-        return view('admin.index', compact('totalUsers', 'totalPosts', 'totalExcursions'));
+        return view('admin.index2', compact('totalUsers', 'totalPosts', 'totalExcursions'));
     }
 
     public function manageUsers()
@@ -35,32 +35,57 @@ class AdminController extends Controller
     public function managePosts()
     {
         $posts = Post::all(); // Fetch all posts from the database
-    return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     public function updatePost(Request $request, $id)
     {
-        // Logic to update post
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+        $post = Post::findOrFail($id);
+        $post->title = $validatedData['title'];
+        $post->content = $validatedData['content'];
+
+        $post->save();
+
+        return redirect()->back()->with('success', 'Post updated successfully.');
     }
 
     public function deletePost($id)
     {
-        // Logic to delete post
+        $post = Post::findOrFail($id);
+        $post->delete();
     }
 
     // Excursion management
     public function manageExcursions()
     {
-        // Logic to fetch and display excursion data
-        return view('admin.excursions');
+        $excursions = Excursion::all();
+        return view('admin.excursions.index', compact('excursions'));
     }
 
     public function deleteExcursion($id)
+    {
+        $excursion = Excursion::findOrFail($id);
+        $excursion->delete();
+        return redirect()->route('admin.excursions.index')->with('success', 'Excursion deleted successfully.');
+    }
+    public function acceptExcursion($id)
 {
     $excursion = Excursion::findOrFail($id);
-    $excursion->delete();
-    return redirect()->route('admin.excursions.index')->with('success', 'Excursion deleted successfully.');
+    $excursion->is_accepted = true;
+    $excursion->save();
+
+    return redirect()->route('admin.excursions.index')->with('success', 'Excursion accepted successfully.');
 }
 
+public function rejectExcursion($id)
+{
+    $excursion = Excursion::findOrFail($id);
+    $excursion->delete(); // Or mark as rejected in some other way
 
+    return redirect()->route('admin.excursions.index')->with('success', 'Excursion rejected successfully.');
+}
 }

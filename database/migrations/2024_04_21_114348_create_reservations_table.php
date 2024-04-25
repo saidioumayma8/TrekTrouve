@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('excursion_id')->constrained('excursion')->onDelete('cascade');
             $table->integer('people');
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

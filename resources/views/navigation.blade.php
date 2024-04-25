@@ -8,14 +8,16 @@
 			<a href="{{ route('home') }}" class="navbar-title">TrekTrouve Time</a>
 			<ul>
 		        <li><a href="destination.html">Articles</a></li>
-
-			    <li><a data-slide="slides" data-slide-target="#discover">Discover</a></li>
                 @auth
-                @if (Auth::user() -> role == 'guide')
+                @if(Auth::user() -> role == 'guide')
+			    <li><a href="{{ route('guide.excursions') }}" class="btn btn-primary">View Excursions</a>
+                </li>
+
                 <li><a href="{{ route('guide.create') }}">Add Excursion</a></li>
 
                 @endif
 			    <li><a href="{{ route('post.create') }}"> Add Post</a></li>
+			    <li><a href="{{ route('reservations.index') }}"> My reservation</a></li>
 
                 <li><form action="{{ route('logout') }}"  method="POST">
                     @csrf<button  class="btn-login" id="openLogin">logout</button>

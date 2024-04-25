@@ -12,7 +12,7 @@ class excursionController extends Controller
     public function index()
     {
         $post = Post::all();
-        $excursions = Excursion::all();
+        $excursions = Excursion::accepted()->get();
         return view('welcome', compact('excursions', 'post'));
     }
 

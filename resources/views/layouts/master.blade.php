@@ -225,7 +225,7 @@
 							<p>{{ $excursion->title }}</p>
 							<b>{{ $excursion->prix }} Dh</b><br>
 							<b>{{ $excursion->date }}</b><br>
-							<b>{{ $excursion->length }} Km</b>
+							<b>{{ $excursion->length }} m</b>
 							<a href="{{ route('guide.trail', $excursion) }}" class="btn btn-orange btn-round right">See Details</a>
 						</div>
 					</div>
@@ -253,6 +253,7 @@
 						<div class="caption-text">
 							<p>{{ $communitypost->title }}</p>
 							<a href="{{ route('post.index', $communitypost->id) }}" class="btn btn-orange btn-round ">See Details</a>
+
 						</div>
 					</div>
 				</div>

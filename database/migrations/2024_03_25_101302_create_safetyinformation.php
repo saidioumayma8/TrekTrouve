@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->unsignedBigInteger('excursion_id'); // Add excursion_id column
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('excursion_id')->references('id')->on('excursion')->onDelete('cascade');
         });
     }

@@ -37,10 +37,6 @@
                         @csrf<button  class="btn-login" id="openLogin">logout</button>
                     </form></li>
 
-    @else
-    <li><a href="{{ route('login') }}"><button  class="btn-login" id="openLogin">LOGIN</button></a></li>
-                    <li><a href="{{ route('register') }}"><button  class="btn-login" id="openLogin">REGISTER</button></a></li>
-                    @endauth
 
                     </ul>
             </div>
@@ -84,13 +80,13 @@
                     <div class="add-form">
 
                             <div class="overview">
-                                <div class="stats">
+                                <div class="stats" data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">
                                     <h2>Total Users: {{ $totalUsers }}</h2>
                                 </div>
-                                <div class="stats">
+                                <div class="stats" data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">
                                     <h2>Total Posts: {{ $totalPosts }}</h2>
                                 </div>
-                                <div class="stats">
+                                <div class="stats" data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">
                                     <h2>Total Excursions: {{ $totalExcursions }}</h2>
                                 </div>
                             </div>
@@ -104,44 +100,7 @@
 
     <section class="section-footer">
         <div class="texture-handler-top"></div>
-        <div class="row">
-            <div class="col-left">
-                <p>Copyright &copy; 2017</p>
-                <p>Jl. Panglima Sudirman, Caruban Madiun <br>
-                Phone : +62 851 2343 9090 <br>
-                Email : contact@bavel.com </p>
-                <a href="https://www.facebook.com/bestbali/" target="_blank"><span class="ion-social-facebook icon-social"></span></a>
-                <a href="https://www.instagram.com/explorebali/" target="_blank"><span class="ion-social-instagram icon-social"></span></a>
-                <a href="https://twitter.com/hashtag/explorebali?lang=en" target="_blank"><span class="ion-social-twitter icon-social"></span></a>
-            </div>
-            <div class="col-right">
-                <b>EXPERIENCE</b>
-                <ul>
-                    <li><a href="#">Natural</a></li>
-                    <li><a href="#">Culture</a></li>
-                    <li><a href="#">Religi</a></li>
-                    <li><a href="#">Culnary</a></li>
-                    <li><a href="#">Adventure</a></li>
-                </ul>
-            </div>
-            <div class="col-right">
-                <b>TRAVEL GUIDE</b>
-                <ul>
-                    <li><a href="#">Tourism Guide</a></li>
-                    <li><a href="#">Travel Agent</a></li>
-                    <li><a href="#">Accomodations</a></li>
-                    <li><a href="#">On Budget</a></li>
-                </ul>
-            </div>
-            <div class="col-right">
-                <b>WHAT'S HAPPEN</b>
-                <ul>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Event</a></li>
-                    <li><a href="#">Tips & Info</a></li>
-                </ul>
-            </div>
-        </div>
+
         <div class="footer-bottom">
             <p><a href="https://github.com/yogs22/tourism-bali-template" rel="noreferer" target="_blank">Tourism Template</a> - Created With <span class="ion-heart red"></span> to create a Lovable Website</p>
         </div>

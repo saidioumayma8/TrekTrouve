@@ -19,10 +19,12 @@ return new class extends Migration
             $table->text('description');
             $table->string('image');
             $table->string('name');
+            $table->softDeletes();
+
             $table->timestamps();
         });
 
-       
+
     }
 
     /**

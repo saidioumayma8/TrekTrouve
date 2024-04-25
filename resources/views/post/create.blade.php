@@ -1,38 +1,35 @@
-<!-- Add Excursion Form -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>10 Ribu Sepeda Tua dari 30 Negara Berkumpul di Bali - Bali Travel Time</title>
+	<title>Elephant Safari Park - Bali Travel Time</title>
 	<link rel="icon" type="image/png" href="img/icon/bavel.png">
-
-	<!-- Meta Description -->
 	<meta name="description" content="Bali Travel Time">
 	<meta name="keywords" content="Travel, Bali, Tourism">
 	<meta name="robots" content="index, nofollow">
 	<meta name="web_author" content="Yogi Prasertawan">
 	<meta name="language" content="Indonesian">
     @include('layouts.header')
-
 </head>
-<body>
+<body style="background: #e6eaed;">
 
-<nav class="navbar scrolled">
+<!-- Navbar -->
+<nav class="navbar">
 	<div class="container">
 		<div class="navbar-bars">
 			<a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
-        	<a href="index.html" class="navbar-title">Bali Travel Time</a>
+        	<a href="index.html" class="navbar-title" style="color: white;">TrekTrouve</a>
 		</div>
 		<div class="navbar-item">
-			<a href="index.html" class="navbar-title" style="color: white">Bali Travel Time</a>
+			<a href="{{ route('home') }}" class="navbar-title" style="color: white;">TrekTrouve</a>
 			<ul>
 		        <li><a href="destination.html">Destination</a></li>
 			    <li><a href="gallery.html">Gallery</a></li>
 			    <li><a href="index.html#discover">Discover</a></li>
 			    <li><a href="news.html"> News</a></li>
-				<li><a href="login.html">Login</a></li>
+				<li><button class="btn-login" id="openLogin">LOGIN</button></li>
   		  	</ul>
 		</div>
 	</div>
@@ -43,13 +40,44 @@
 <ul class="sidebar-list">
 	<li><a href="" class="close"><span class="ion-android-close"></span></a></li>
 	<li class="sidebar-list-hover"><a href="index.html">Home</a></li>
-    <li class="sidebar-list-hover"><a href="destination.html">Destination</a></li>
+    <li class="sidebar-list-hover"><a href="destination.html">Articles</a></li>
     <li class="sidebar-list-hover"><a href="gallery.html">Gallery</a></li>
     <li class="sidebar-list-hover"><a href="index.html#discover">Discover</a></li>
-    <li class="sidebar-list-hover"><a href="news.html"> News</a></li>
-    <li><a class="btn btn-orange btn-round" href="login.html"> Login</a></li>
+    <li class="sidebar-list-hover"><a href="news.html"> Excursions</a></li>
+    @auth
+
+                <li><form action="{{ route('logout') }}"  method="POST">
+                    @csrf<button  class="btn-login" id="openLogin">logout</button>
+                </form></li>
+
+@else
+<li><a href="{{ route('login') }}"><button  class="btn-login" id="openLogin">LOGIN</button></a></li>
+				<li><a href="{{ route('register') }}"><button  class="btn-login" id="openLogin">REGISTER</button></a></li>
+                @endauth
 </ul>
 </div>
+
+<!-- Sidebar Overlay -->
+<section class="sidebar-overlay"></section>
+
+<!-- Login Form -->
+
+
+<div class="login-overlay"></div>
+
+<!-- Section -->
+
+<section class="section-ticket">
+    <div class="header">
+        <img src="{{ asset('assets/img/elephant.jpg') }}">
+        <div class="overlay">
+            <div class="desc">
+                <h3></h3>
+                <p>Date:</p>
+                <p>Price: Rp</p>
+            </div>
+        </div>
+    </div>
 <section class="section-header">
 
 <div class="add-form">

@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->string('endpoint');
                 $table->string('startpoint');
                 $table->integer('length');
+            $table->softDeletes();
                 $table->timestamps();
                 $table->foreignID('excursion_id')->constrained('excursion')->onDelete('cascade');
 
