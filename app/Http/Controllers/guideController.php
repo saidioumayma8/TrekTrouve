@@ -10,8 +10,10 @@ class guideController extends Controller
 {
     public function index()
 {
+
     $guide = Auth::user();
     $excursions = $guide->excursion;
     return view('guide.excursions', compact('excursions', 'guide'));
 }
+
 }

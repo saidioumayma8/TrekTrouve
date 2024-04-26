@@ -69,10 +69,10 @@
                 <td>{{ $excursion->date }}</td>
                 <td>{{ $excursion->location }}</td>
                 <td>
-                    <button  data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">delete</button>
+                    <a href="{{ route('guide.excursion.delete' , $excursion->id) }}"><button  data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">delete</button></a>
                 </td>
                 <td>
-                    <button  data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">edit</button>
+                    <a href="{{ route('guide.excursion.edit' , $excursion->id)}}"><button  data-slide="slides" data-slide-target="#find" class="btn-ticket btn-orange">edit</button></a>
                 </td>
             </tr>
         @endforeach

@@ -108,7 +108,7 @@
 	</div>
 	<div class="section-discover-body ">
 		<div class="col">
-			<a href="destination.html">
+			<a>
 				<img src="{{ asset('assets/img/selfie.jpg') }}" alt="Destination">
 				<div class="caption">
 					<p>DESTINATION</p>
@@ -120,7 +120,7 @@
 			</a>
 		</div>
 		<div class="col">
-			<a href="culture.html">
+			<a>
 				<img src="{{ asset('assets/img/culture.jpg') }}">
 				<div class="caption" alt="Culture">
 					<p>CULTURE</p>
@@ -132,7 +132,7 @@
 			</a>
 		</div>
 		<div class="col">
-			<a href="event.html">
+			<a>
 				<img src="{{ asset('assets/img/event.jpg') }}">
 				<div class="caption" alt="Event">
 					<p>EVENT</p>
@@ -144,7 +144,7 @@
 			</a>
 		</div>
 		<div class="col">
-			<a href="stay.html">
+			<a >
 				<img src="{{ asset('assets/img/stay.jpg') }}">
 				<div class="caption" alt="Stay">
 					<p>WHERE TO STAY</p>
@@ -232,7 +232,8 @@
 				</div>
 			</div>
             @endforeach
-	</div>
+	    </div>
+    </div>
 </section>
 
 
@@ -244,7 +245,7 @@
 	</div>
 	<div class="section-tour-body">
 		<div class="row">
-            @foreach($post as $communitypost)
+            @foreach($posts as $communitypost)
 
 			<div class="col-1 ">
 				<img src="storage/{{ $communitypost->image }}">

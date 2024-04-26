@@ -62,16 +62,11 @@ class AdminController extends Controller
     // Excursion management
     public function manageExcursions()
     {
-        $excursions = Excursion::all();
+        $excursions = Excursion::where('is_accepted', false);
         return view('admin.excursions.index', compact('excursions'));
     }
 
-    public function deleteExcursion($id)
-    {
-        $excursion = Excursion::findOrFail($id);
-        $excursion->delete();
-        return redirect()->route('admin.excursions.index')->with('success', 'Excursion deleted successfully.');
-    }
+    
     public function acceptExcursion($id)
 {
     $excursion = Excursion::findOrFail($id);
@@ -88,4 +83,5 @@ public function rejectExcursion($id)
 
     return redirect()->route('admin.excursions.index')->with('success', 'Excursion rejected successfully.');
 }
+
 }

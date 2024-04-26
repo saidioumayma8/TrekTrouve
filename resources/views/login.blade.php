@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<div class="row justify-content-center mt-5">
+<div class="container loginn  row justify-content-center mt-5">
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
@@ -33,22 +33,23 @@
                         @csrf
                         <div class="mb-3">
                             <label form="email" class="form-label">Email address</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="oumayma@gmail.com" required>
+                            <input type="email" name="email" class="form-control" id="email"  required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-5">
                             <label form="passwrd" class="form-label">password</label>
                             <input type="password" name="password" class="form-control" id="password" required>
                         </div>
-                        <div class="mb-3">
-                            <div class="d-grid">
-                                <button class="btn btn-primary">Login</button>
+                        <div class="mb-3 ">
+                            <div class="d-grid ">
+                                <button class="btn btn-orange btn-round ">Login</button>
                             </div>
                         </div>
                         <div>
-                        <h6><a href="{{ route('register') }}">you have a conte ?</a></h6>
+                        <h4 class="have"><a href="{{ route('register') }}">Create a conte ?</a></h4>
                     </div>
 
                     </form>
+
                 </div>
             </div>
         </div>

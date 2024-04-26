@@ -9,7 +9,7 @@
 			<ul>
 		        <li><a href="destination.html">Articles</a></li>
                 @auth
-                @if(Auth::user() -> role == 'guide')
+                @if(Auth::user()->role == 'guide')
 			    <li><a href="{{ route('guide.excursions') }}" class="btn btn-primary">View Excursions</a>
                 </li>
 
@@ -17,6 +17,7 @@
 
                 @endif
 			    <li><a href="{{ route('post.create') }}"> Add Post</a></li>
+                
 			    <li><a href="{{ route('reservations.index') }}"> My reservation</a></li>
 
                 <li><form action="{{ route('logout') }}"  method="POST">

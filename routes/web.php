@@ -51,10 +51,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 // Guide routes
 Route::middleware(['auth', 'role:guide'])->group(function () {
+
     Route::get('/guide', [ExcursionController::class, 'index'])->name('guide');
     Route::get('/guide/create', [trailController::class, 'create'])->name('guide.create');
     Route::post('/guide/store', [trailController::class, 'store'])->name('guide.store');
     Route::get('/guide/excursions', [guideController::class, 'index'])->name('guide.excursions');
+
+
+    Route::get('/excursion/{id}', [excursionController::class, 'editExcursion'])->name('guide.excursion.edit');
+    Route::put('/update_excursion/{id}', [excursionController::class, 'updateexcursion'])->name('update_excursion');
+    Route::delete('/excursion/{id}/delete', [excursionController::class, 'deleteExcursion'])->name('guide.excursion.delete');
+
 });
 
 Route::resource('/communitypost', CommunityPostController::class);
@@ -73,6 +80,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 // Other routes
 Route::get('/guide/trail/{excursion}', [trailController::class, 'showTrail'])->name('guide.trail');
+
 Route::get('/trail/{id}', [TrailController::class, 'show'])->name('trail.show');
 
 

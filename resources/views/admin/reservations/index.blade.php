@@ -13,6 +13,8 @@
 	<meta name="robots" content="index, nofollow">
 	<meta name="web_author" content="Yogi Prasertawan">
 	<meta name="language" content="Indonesian">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 	@include('layouts.header')
 
 
@@ -52,35 +54,29 @@
 </section>
 
 
-@foreach ($excursions as $excursion)
-<div class="panel">
-    <div class="panel-header">
-        <span class="ion-android-clipboard"></span>&nbsp; Detail Ticket
-    </div>
-    <div class="panel-body">
-        <div class="detail">
-            <div class="col-1">
-                <div class="col-2">
-                    Excursion: {{ $excursion->title }}
-                </div>
-                <div class="col-2">
-                    Date: {{ $excursion->date }}
-                </div>
-                <div class="col">
-                    number people: {{ $excursion->title}}
-                </div>
-                <div class="col">
-                    prix: {{ $excursion->prix }}
-                </div>
-            </div>
 
-        </div>
+    <div class="section-tour-body">
+		<div class="row">
+            @foreach($reservations as $reservation)
+			<div class="col-1 ">
+				<img src="storage/{{ $reservation->excursion->image }}">
+				<div class="overlay">
+					<div class="caption">
+						<div class="caption-text">
+							<p>{{ $reservation->excursion->title }}</p>
+							<b>{{ $reservation->excursion->prix }} Dh</b><br>
+							<b>{{ $reservation->excursion->date }}</b><br>
+							<b>{{ $reservation->excursion->length }} m</b>
+							<a href="{{ route('guide.trail', $reservation) }}" class="btn btn-orange btn-round right">See Details</a>
+						</div>
+					</div>
+				</div>
+			</div>
+            @endforeach
+	    </div>
     </div>
 </div>
-<ul>
-
-    @endforeach
-</ul>
+<
 <section class="section-footer">
 	<div class="texture-handler-top"></div>
 	<div class="row">
