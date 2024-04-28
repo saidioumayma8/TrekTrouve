@@ -65,9 +65,9 @@
 		<div class="app-body-navigation">
 			<nav class="navigation">
 
-				<a href="#">
+				<a href="{{ route('admin') }}">
 					<i class="ph-check-square"></i>
-					<span>Scheduled</span>
+					<span>Home</span>
 				</a>
 			</nav>
 			<footer class="footer">

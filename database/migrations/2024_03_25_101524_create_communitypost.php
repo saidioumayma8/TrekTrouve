@@ -19,7 +19,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('image');
             $table->string('title');
-            $table->unsignedBigInteger('userid'); // Change to unsigned big integer
+            $table->boolean("is_accepted")->default(false);
+            $table->unsignedBigInteger('userid');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');

@@ -68,7 +68,7 @@
 		<div class="app-body-navigation">
 			<nav class="navigation">
 
-				<a href="#">
+				<a href="{{ route('admin') }}">
 					<i class="ph-check-square"></i>
 					<span>Home</span>
 				</a>
@@ -107,14 +107,17 @@
                                 <td>{{ $post->author }}</td>
                                 <td>{{ $post->date }}</td>
                                 <td>
-                                    <a href="{{ route('admin.posts.update', $post->id) }}" class="btn btn-orange btn-round right">Edit</a>
-
+                                    <form action="{{ route('admin.posts.accept', $post->id) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-success">Accept</button>
+                                    </form>
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.posts.delete', $post->id) }}" method="POST">
+                                    <form action="{{ route('admin.posts.reject', $post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-orange btn-round right">Delete</button>
+                                        <button type="submit" class="btn btn-danger">Reject</button>
                                     </form>
                                 </td>
                             </tr>

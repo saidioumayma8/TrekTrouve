@@ -19,10 +19,11 @@ class AdminController extends Controller
     }
 
     public function manageUsers()
-    {
-        $users = User::all();
-        return view('admin.users.index', compact('users'));
-    }
+{
+    $users = User::whereIn('role', ['user', 'guide'])->get();
+
+    return view('admin.users.index', compact('users'));
+}
 
     public function deleteUser(User $user)
     {
@@ -57,16 +58,19 @@ class AdminController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
+        return redirect()->route('admin.posts.index')->with('success', 'post deleted successfully.');
+
     }
 
     // Excursion management
     public function manageExcursions()
     {
-        $excursions = Excursion::where('is_accepted', false);
+        $excursions = Excursion::where('is_accepted', false)->get();
+
         return view('admin.excursions.index', compact('excursions'));
     }
 
-    
+
     public function acceptExcursion($id)
 {
     $excursion = Excursion::findOrFail($id);

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\guideController;
 use App\Http\Controllers\trailController;
@@ -32,7 +33,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // User management
     Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users.index');
-    // Route::delete('/admin/users/{id}/delete', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
     Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
     // Post management
@@ -42,11 +42,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // Excursion management
     Route::get('/admin/excursions/index', [AdminController::class, 'manageExcursions'])->name('admin.excursions.index');
-    // Route::get("admin/excursions", [AdminController::class, 'edit'])->name("admin.excursions.edit");
-    Route::post('/admin/excursions/{id}/update', [AdminController::class, 'updateExcursion'])->name('admin.excursions.update');
     Route::delete('/admin/excursions/{id}/delete', [AdminController::class, 'deleteExcursion'])->name('admin.excursions.delete');
+
     Route::patch('/admin/excursions/{id}/accept', [AdminController::class, 'acceptExcursion'])->name('admin.excursions.accept');
     Route::delete('/admin/excursions/{id}/reject', [AdminController::class, 'rejectExcursion'])->name('admin.excursions.reject');
+    Route::patch('/admin/posts/{id}/accept', [PostController::class, 'acceptPost'])->name('admin.posts.accept');
+    Route::delete('/admin/posts/{id}/reject', [PostController::class, 'rejectpost'])->name('admin.posts.reject');
 });
 
 // Guide routes
@@ -68,6 +69,13 @@ Route::resource('/communitypost', CommunityPostController::class);
 Route::get('/post/{id}', [CommunityPostController::class, 'show'])->name('post.index');
 Route::get('/post_create', [CommunityPostController::class, 'create'])->name('post.create');
 Route::post('/post/store', [CommunityPostController::class, 'store'])->name('post.store');
+
+Route::get('/posts', [PostController::class, 'index'])->name('post.singlepost');
+Route::get('/post', [PostController::class, 'editpost'])->name('post.edit');
+Route::put('/update_post/{id}', [PostController::class, 'updatepost'])->name('update_post');
+Route::delete('/post/{id}/delete', [PostController::class, 'deletepost'])->name('post.delete');
+Route::patch('/post/{id}/accept', [PostController::class, 'acceptpost'])->name('excursions.accept');
+Route::delete('/post/{id}/reject', [PostController::class, 'rejectpost'])->name('reject');
 
 
 // User routes

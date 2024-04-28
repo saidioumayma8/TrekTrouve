@@ -58,25 +58,9 @@
 	<div class="app-body">
 		<div class="app-body-navigation">
 			<nav class="navigation">
-				<a href="#">
-					<i class="ph-check-square"></i>
-					<span>Scheduled</span>
-				</a>
-				<a href="#">
-					<i class="ph-swap"></i>
-					<span>Transfers</span>
-				</a>
-				<a href="#">
-					<i class="ph-file-text"></i>
-					<span>Templates</span>
-				</a>
-				<a href="#">
-					<i class="ph-globe"></i>
-					<span>SWIFT</span>
-				</a>
-				<a href="#">
+				<a href="{{ route('admin') }}">
 					<i class="ph-clipboard-text"></i>
-					<span>Exchange</span>
+					<span>Home</span>
 				</a>
 			</nav>
 			<footer class="footer">
@@ -113,17 +97,18 @@
                                 <td>{{ $excursion->title }}</td>
                                 <td>{{ $excursion->date }}</td>
                                 <td>{{ $excursion->location }}</td>
+                                <td> <form action="{{ route('admin.excursions.reject', $excursion->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                </form></td>
                                 <td>
                                     <form action="{{ route('admin.excursions.accept', $excursion->id) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-success">Accept</button>
                                     </form>
-                                    <form action="{{ route('admin.excursions.reject', $excursion->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Reject</button>
-                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach

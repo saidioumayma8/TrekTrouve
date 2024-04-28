@@ -56,35 +56,53 @@
         <img src="{{ asset('assets/img/elephant.jpg') }}">
         <div class="overlay">
             <div class="desc">
-                <h3>Add Post</h3>
+                <h3>Your Posts</h3>
             </div>
         </div>
     </div>
 </section>
 <section class="section-header">
 
-<div class="container loginn  row justify-content-center mt-5">
-<form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="form-group">
-        <label for="image">title</label>
-        <input type="text" name="title" id="title" class="form-control-file">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Your Posts</div>
+
+                <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($posts as $post)
+                                <tr>
+                                    <td>{{ $post->title }}</td>
+                                    <td><a href="{{ route('admin.posts.update', $post->id) }}" class="btn btn-orange btn-round right">Edit</a></td>
+                                    <td>
+                                        <form action="{{ route('admin.posts.delete', $post->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-orange btn-round right">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="content">Content</label>
-        <textarea name="content" id="content" class="form-control" rows="5"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="image">Image</label>
-        <input type="file" name="image" id="image" class="form-control-file">
-    </div>
-    <!-- You can add fields for userid and itemsid if necessary -->
-    <button type="submit" class="btn btn-orange btn-round ">Submit</button>
-</form>
 </div>
 </section>
 <section class="section-footer">
@@ -135,3 +153,4 @@
 
 </body>
 </html>
+

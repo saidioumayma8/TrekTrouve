@@ -130,6 +130,7 @@
 				</div>
 			</div>
 		</div>
+        @auth
 		<div class="panel">
             <div class="panel-body">
                 <form method="POST" action="{{ route('trail_reserv',$excursion) }}">
@@ -148,6 +149,8 @@
                 </form>
             </div>
         </div>
+        @endauth
+
 	</div>
 </section>
 

@@ -7,22 +7,24 @@
 		<div class="navbar-item">
 			<a href="{{ route('home') }}" class="navbar-title">TrekTrouve Time</a>
 			<ul>
-		        <li><a href="destination.html">Articles</a></li>
                 @auth
                 @if(Auth::user()->role == 'guide')
-			    <li><a href="{{ route('guide.excursions') }}" class="btn btn-primary">View Excursions</a>
-                </li>
+			    <li><a href="{{ route('guide.excursions') }}">View  my Excursions</a></li>
 
                 <li><a href="{{ route('guide.create') }}">Add Excursion</a></li>
 
                 @endif
 			    <li><a href="{{ route('post.create') }}"> Add Post</a></li>
-                
-			    <li><a href="{{ route('reservations.index') }}"> My reservation</a></li>
+                <li><a href="{{ route('post.singlepost') }}">View  my posts</a></li>
 
+                @if(Auth::user()->role == 'user')
+
+			    <li><a href="{{ route('reservations.index') }}"> My reservation</a></li>
+@endif
                 <li><form action="{{ route('logout') }}"  method="POST">
                     @csrf<button  class="btn-login" id="openLogin">logout</button>
                 </form></li>
+
 
 @else
 <li><a href="{{ route('login') }}"><button  class="btn-login" id="openLogin">LOGIN</button></a></li>

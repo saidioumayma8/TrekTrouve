@@ -113,7 +113,7 @@
                                       <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
                                           @csrf
                                           @method('DELETE')
-                                          <button type="submit" class="btn btn-orange btn-round right">Delete</button>
+                                          <button type="submit" class="btn btn-danger">Delete</button>
                                       </form>
                                   </td>
                               </tr>
