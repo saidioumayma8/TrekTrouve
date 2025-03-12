@@ -21,7 +21,7 @@ TrekTrouve is a platform dedicated to exploring Morocco's breathtaking landscape
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/TrekTrouve.git
+   git clone https://github.com/saidioumayma8/TrekTrouve.git
    ```
 
 2. Navigate to the project directory:
@@ -46,9 +46,9 @@ TrekTrouve is a platform dedicated to exploring Morocco's breathtaking landscape
 5. Configure the database connection in `.env`:
 
    ```sh
-   DB_DATABASE=your_database
-   DB_USERNAME=your_username
-   DB_PASSWORD=your_password
+   DB_DATABASE=TrekTrove
+   DB_USERNAME=root
+   DB_PASSWORD=root
    ```
 
 6. Generate application key:
