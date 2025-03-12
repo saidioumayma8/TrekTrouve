@@ -1,78 +1,85 @@
-TrekTrouve
+# TrekTrouve
 
 TrekTrouve is a platform dedicated to exploring Morocco's breathtaking landscapes through guided excursions and adventure trips. Our mission is to connect travelers with experienced guides and provide seamless trip planning services.
 
-Features
+## Features
 
-Excursion Management: Create, manage, and explore various excursions across Morocco.
+- **Excursion Management**: Create, manage, and explore various excursions across Morocco.
+- **Trail Integration**: Connect excursions with designated trails for a structured adventure.
+- **Guide System**: Experienced guides provide insights, recommendations, and lead trips.
+- **Trip Assistance**: Get help planning your trips, including recommended activities and itineraries.
 
-Trail Integration: Connect excursions with designated trails for a structured adventure.
+## Technologies Used
 
-Guide System: Experienced guides provide insights, recommendations, and lead trips.
+- **Backend**: Laravel (PHP Framework)
+- **Frontend**: Blade Templates, HTML, CSS, JavaScript
+- **Database**: MySQL
+- **Version Control**: Git & GitHub
 
-Trip Assistance: Get help planning your trips, including recommended activities and itineraries.
+## Installation
 
-Technologies Used
+1. Clone the repository:
 
-Backend: Laravel (PHP Framework)
+   ```sh
+   git clone https://github.com/yourusername/TrekTrouve.git
+   ```
 
-Frontend: Blade Templates, HTML, CSS, JavaScript
+2. Navigate to the project directory:
 
-Database: MySQL
+   ```sh
+   cd TrekTrouve
+   ```
 
-Version Control: Git & GitHub
+3. Install dependencies:
 
-Installation
+   ```sh
+   composer install
+   npm install
+   ```
 
-Clone the repository:
+4. Create a `.env` file:
 
-git clone https://github.com/yourusername/TrekTrouve.git
+   ```sh
+   cp .env.example .env
+   ```
 
-Navigate to the project directory:
+5. Configure the database connection in `.env`:
 
-cd TrekTrouve
+   ```sh
+   DB_DATABASE=your_database
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-Install dependencies:
+6. Generate application key:
 
-composer install
-npm install
+   ```sh
+   php artisan key:generate
+   ```
 
-Create a .env file:
+7. Run migrations and seed database:
 
-cp .env.example .env
+   ```sh
+   php artisan migrate --seed
+   ```
 
-Configure the database connection in .env:
+8. Start the development server:
 
-DB_DATABASE=your_database
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+   ```sh
+   php artisan serve
+   ```
 
-Generate application key:
+## Usage
 
-php artisan key:generate
+- Register and log in to access excursion features.
+- Create new excursions and link them to specific trails.
+- View and manage excursions as an admin.
+- Connect with guides for planned adventures.
+- Get assistance in planning the perfect trip.
 
-Run migrations and seed database:
+## Project Structure
 
-php artisan migrate --seed
-
-Start the development server:
-
-php artisan serve
-
-Usage
-
-Register and log in to access excursion features.
-
-Create new excursions and link them to specific trails.
-
-View and manage excursions as an admin.
-
-Connect with guides for planned adventures.
-
-Get assistance in planning the perfect trip.
-
-Project Structure
-
+```
 TrekTrouve/
 │── app/
 │   ├── Models/        # Laravel Eloquent models (Excursion, Trail, etc.)
@@ -89,30 +96,35 @@ TrekTrouve/
 │── composer.json      # PHP dependencies
 │── package.json       # Frontend dependencies
 │── README.md          # Project documentation
+```
 
-Contributing
+## Contributing
 
-Fork the repository.
+1. Fork the repository.
+2. Create a new branch:
 
-Create a new branch:
+   ```sh
+   git checkout -b feature-name
+   ```
 
-git checkout -b feature-name
+3. Make your changes and commit:
 
-Make your changes and commit:
+   ```sh
+   git commit -m "Add new feature"
+   ```
 
-git commit -m "Add new feature"
+4. Push to your branch:
 
-Push to your branch:
+   ```sh
+   git push origin feature-name
+   ```
 
-git push origin feature-name
+5. Submit a pull request.
 
-Submit a pull request.
-
-License
+## License
 
 This project is licensed under the MIT License.
 
-Contact
+## Contact
 
-For any inquiries, feel free to reach out at Oumaymasaidi908@gmail.com.
-
+For any inquiries, feel free to reach out at oumaymasaidi908@gmail.com.
